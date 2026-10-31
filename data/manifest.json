@@ -1,0 +1,17 @@
+{
+ "export_id": "exp-3d08395e41aced27",
+ "files": {
+  "backtest.json": {
+   "bytes": 528083,
+   "sha256": "a7fddbbfdaf8de7730e4a2a8383d8aaacbb2cfaf9700e5a354a3de8116c4a237"
+  },
+  "live.json": {
+   "bytes": 67877,
+   "sha256": "bbb3a97ba7ef797bd662987961d087eb93e9862c81a18b56ca8715e4237a7ffd"
+  }
+ },
+ "generated_at": "2026-10-31T03:08:26.142550Z",
+ "live_last_session": "2026-10-30",
+ "schema_version": 2,
+ "source_commit": "1db8342f30a425eb152e19a37f0da5a143cf76f0"
+}

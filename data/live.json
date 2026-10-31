@@ -1,0 +1,2757 @@
+{
+ "ai_usage": {
+  "billing": "abbonamento Claude: nessuna chiamata API a consumo",
+  "decisions_by_model": {
+   "claude-sonnet-5-5": 9
+  },
+  "note": "Il costo marginale per decisione non è misurato: il task usa la quota dell'abbonamento. Il conteggio indica quante decisioni ha preso ogni modello."
+ },
+ "brokers": [
+  {
+   "description": "1 EUR per ordine, frazioni di azione, interessi sulla liquidità.",
+   "id": "traderepublic",
+   "label": "Trade Republic"
+  },
+  {
+   "description": "0,19% del controvalore (min 2,95, max 19 EUR), solo azioni intere.",
+   "id": "fineco",
+   "label": "Fineco (conto Trading)"
+  }
+ ],
+ "generated_at": "2026-10-31T03:08:26.142550Z",
+ "schema_version": 2,
+ "status": {
+  "costs_calibrated": false,
+  "currency": "EUR",
+  "data_provider": "Tiingo (end-of-day, S&P 100) e BCE (cambio EUR/USD)",
+  "decisions_invalid": 0,
+  "decisions_late": 0,
+  "decisions_missed": 3,
+  "inception": "2026-10-27",
+  "initial_cash": 10000.0,
+  "last_prepare_status": "prepared",
+  "last_run_at": "2026-10-31T03:07:51.034383Z",
+  "last_session": "2026-10-30",
+  "phase": "finalized",
+  "scenario": "base",
+  "schedule": "giorni feriali alle 21:05, 22:05 e 23:05 di New York (task Claude pianificato)"
+ },
+ "strategies": [
+  {
+   "decisions": [
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "momentum-v3-6d3b0228",
+     "rationale": "Tutte le 13 posizioni sono ancora fra i candidati momentum e sopra la media a 200 sedute; nessuna rottura del trend. Energia al 24% sotto il limite del 30%. Mercato non in forte calo. Ribilanciare costerebbe commissioni, spread e imposte senza vantaggio chiaro: hold.",
+     "reason_codes": [
+      "HOLD_PORTFOLIO_COHERENT",
+      "NO_TREND_BREAK",
+      "LOW_TURNOVER"
+     ],
+     "session": "2026-10-30",
+     "targets": {}
+    },
+    {
+     "confidence": null,
+     "detail": "pipeline non eseguita in questa seduta",
+     "model_id": null,
+     "orders": {},
+     "outcome": "missed",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [],
+     "session": "2026-10-29",
+     "targets": {}
+    },
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "momentum-v3-6d3b0228",
+     "rationale": "Tutte le 13 posizioni restano sopra la media a 200 sedute e fra i candidati momentum; nessuna rottura evidente. Mercato sano (S&P sopra SMA200, ampiezza 70%). Non vale pagare commissioni e imposte per ritoccare i pesi.",
+     "reason_codes": [
+      "HOLD_TREND_INTACT",
+      "LOW_TURNOVER"
+     ],
+     "session": "2026-10-28",
+     "targets": {}
+    },
+    {
+     "confidence": 0.6,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {
+      "fineco": 13,
+      "traderepublic": 13
+     },
+     "outcome": "applied",
+     "prompt_version": "momentum-v2-111a02e1",
+     "rationale": "Portafoglio vuoto: costruzione iniziale con 13 titoli a momentum 12-1 elevato, sopra SMA200 e rendimenti positivi su 126/252 sedute. Max 3 per settore (energia 24%, sanita 23%, IT 22%), preferiti i meno volatili. Mercato sano (S&P sopra SMA200, ampiezza 69%): nessuna riduzione di esposizione, cassa 2%.",
+     "reason_codes": [
+      "INITIAL_ALLOCATION",
+      "MOM_12_1_STRONG",
+      "ABOVE_SMA200",
+      "SECTOR_DIVERSIFIED"
+     ],
+     "session": "2026-10-27",
+     "targets": {
+      "AAPL": 0.08,
+      "AMGN": 0.07,
+      "BNY": 0.07,
+      "COP": 0.08,
+      "CSCO": 0.07,
+      "CVX": 0.08,
+      "FDX": 0.07,
+      "JNJ": 0.09,
+      "KO": 0.07,
+      "LLY": 0.07,
+      "TXN": 0.07,
+      "UNP": 0.08,
+      "XOM": 0.08
+     }
+    }
+   ],
+   "description": "Titoli con il trend più forte e persistente.",
+   "id": "agent-momentum",
+   "kind": "agent",
+   "label": "Agente A · Momentum",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 35.4,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 60.89,
+      "fx_costs": 21.66,
+      "interest_net": 0.0,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 3.61,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.010242,
+       "equity": 9897.58,
+       "gross_equity": 10018.91
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": -0.003862,
+       "equity": 9961.38,
+       "gross_equity": 10082.94
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": -0.003343,
+       "equity": 9966.57,
+       "gross_equity": 10088.13
+      }
+     ],
+     "id": "agent-momentum@fineco",
+     "latest_equity": 9966.57,
+     "mark_to_market": 10027.46,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 1.0897594076893609,
+       "days": 3,
+       "expected_shortfall_95": 0.0005147308225574854,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 15.14551568339383,
+       "sortino": null,
+       "total_return": 0.00881299999999996,
+       "turnover": 60.40562349122842,
+       "volatility": 0.048787921525688865
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.24518487402292566,
+       "days": 3,
+       "expected_shortfall_95": -0.010241999999999973,
+       "max_drawdown": -0.010241999999999973,
+       "profit_factor": 0.6735989064635787,
+       "sharpe": -2.048383853031574,
+       "sortino": -2.930636095011993,
+       "total_return": -0.003342999999999985,
+       "turnover": 60.958405324423815,
+       "volatility": 0.1342996760446778
+      }
+     },
+     "total_return": -0.003343,
+     "trades": [
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 647.91,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "XOM"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 536.72,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 553.94,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "TXN"
+      },
+      {
+       "commission_eur": null,
+       "notional_eur": null,
+       "reject_reason": "below_minimum",
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "rejected",
+       "symbol": "LLY"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 651.83,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 715.31,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JNJ"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 550.21,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "FDX"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 615.88,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 602.48,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CSCO"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 667.29,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "COP"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 665.81,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BNY"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 395.58,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AMGN"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 622.34,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AAPL"
+      }
+     ]
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 13.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 22.97,
+      "fx_costs": 0.0,
+      "interest_net": 0.55,
+      "liquidation_tax": 41.12,
+      "loss_carryforward": 0.0,
+      "spread_costs": 9.8,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.000733,
+       "equity": 9992.67,
+       "gross_equity": 10038.29
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10092.45,
+       "gross_equity": 10170.69
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10119.71,
+       "gross_equity": 10206.6
+      }
+     ],
+     "id": "agent-momentum@traderepublic",
+     "latest_equity": 10119.71,
+     "mark_to_market": 10183.8,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 4.572011149275807,
+       "days": 3,
+       "expected_shortfall_95": 0.0035307339030095086,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 19.797549145341293,
+       "sortino": null,
+       "total_return": 0.020660000000000123,
+       "turnover": 81.36545361961898,
+       "volatility": 0.08718934944877331
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 1.717175179125915,
+       "days": 3,
+       "expected_shortfall_95": -0.0007329999999999837,
+       "max_drawdown": -0.0007329999999999837,
+       "profit_factor": 17.331514324693085,
+       "sharpe": 11.556515593608394,
+       "sortino": 149.46009018796948,
+       "total_return": 0.011970999999999954,
+       "turnover": 81.79196380136416,
+       "volatility": 0.08688442834281031
+      }
+     },
+     "total_return": 0.011971,
+     "trades": [
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 799.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "XOM"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 799.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "TXN"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "LLY"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 899.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JNJ"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "FDX"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 799.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CSCO"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 799.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "COP"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BNY"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 699.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AMGN"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 799.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AAPL"
+      }
+     ]
+    }
+   },
+   "target_allocation": {
+    "AAPL": 0.08,
+    "AMGN": 0.07,
+    "BNY": 0.07,
+    "COP": 0.08,
+    "CSCO": 0.07,
+    "CVX": 0.08,
+    "FDX": 0.07,
+    "JNJ": 0.09,
+    "KO": 0.07,
+    "LLY": 0.07,
+    "TXN": 0.07,
+    "UNP": 0.08,
+    "XOM": 0.08
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "regime-v3-df940202",
+     "rationale": "Regime favorevole: S&P 500 4,1% sopra la media a 200 sedute, volatilita 10,5%, drawdown -3%, ampiezza 64%. Il portafoglio e gia investito al 97% in 13 titoli difensivi a bassa volatilita e beta, ben diversificati. Nessun cambio di regime: hold per evitare costi e imposte.",
+     "reason_codes": [
+      "REGIME_FAVOREVOLE",
+      "ALLOCAZIONE_COERENTE",
+      "EVITA_TURNOVER"
+     ],
+     "session": "2026-10-30",
+     "targets": {}
+    },
+    {
+     "confidence": null,
+     "detail": "pipeline non eseguita in questa seduta",
+     "model_id": null,
+     "orders": {},
+     "outcome": "missed",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [],
+     "session": "2026-10-29",
+     "targets": {}
+    },
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "regime-v3-df940202",
+     "rationale": "Indice +6,5% sopra la SMA200, volatilita 10%, ampiezza 70%, drawdown minimo: regime favorevole. Il portafoglio e gia investito al 97% in 13 titoli difensivi diversificati: nessun cambio di regime, quindi hold per evitare costi e imposte.",
+     "reason_codes": [
+      "REGIME_FAVOREVOLE",
+      "ALLOCAZIONE_COERENTE",
+      "BASSO_TURNOVER"
+     ],
+     "session": "2026-10-28",
+     "targets": {}
+    },
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {
+      "fineco": 13,
+      "traderepublic": 13
+     },
+     "outcome": "applied",
+     "prompt_version": "regime-v2-56bfed86",
+     "rationale": "Regime favorevole: S&P 500 +6,2% sopra la media a 200 sedute, volatilita 10,7%, ampiezza 69%, drawdown contenuto. Portafoglio oggi tutto in cassa: investo circa il 97% su 13 titoli di qualita e bassa volatilita/beta, max 3 per settore (Financials 22%), con un po' di cassa. Orizzonte 21 sedute.",
+     "reason_codes": [
+      "REGIME_FAVOREVOLE",
+      "SOPRA_SMA200",
+      "VOL_BASSA",
+      "QUALITA_BASSA_VOL",
+      "DIVERSIFICAZIONE"
+     ],
+     "session": "2026-10-27",
+     "targets": {
+      "AAPL": 0.0745,
+      "ABBV": 0.0745,
+      "BRK-B": 0.0745,
+      "CVX": 0.0745,
+      "GD": 0.0745,
+      "JNJ": 0.0745,
+      "JPM": 0.0745,
+      "KO": 0.0745,
+      "LIN": 0.0745,
+      "PFE": 0.0745,
+      "PG": 0.0745,
+      "UNP": 0.0745,
+      "V": 0.0745
+     }
+    }
+   ],
+   "description": "Esposizione decisa dal regime di mercato, titoli difensivi.",
+   "id": "agent-regime",
+   "kind": "agent",
+   "label": "Agente B · Regime",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 38.35,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 67.22,
+      "fx_costs": 24.2,
+      "interest_net": 0.0,
+      "liquidation_tax": 19.31,
+      "loss_carryforward": 0.0,
+      "spread_costs": 4.03,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.009591,
+       "equity": 9904.09,
+       "gross_equity": 10037.28
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10021.77,
+       "gross_equity": 10163.05
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10054.95,
+       "gross_equity": 10208.06
+      }
+     ],
+     "id": "agent-regime@fineco",
+     "latest_equity": 10054.95,
+     "mark_to_market": 10141.48,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 4.639362076228133,
+       "days": 3,
+       "expected_shortfall_95": 0.0037280000000001756,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 22.375255094604487,
+       "sortino": null,
+       "total_return": 0.02080599999999988,
+       "turnover": 67.07013469232504,
+       "volatility": 0.07766232611629229
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.5845753218612153,
+       "days": 3,
+       "expected_shortfall_95": -0.009591000000000016,
+       "max_drawdown": -0.009591000000000016,
+       "profit_factor": 1.5729329579814495,
+       "sharpe": 2.742310917444702,
+       "sortino": 5.353029685578197,
+       "total_return": 0.005495000000000028,
+       "turnover": 67.78742501715199,
+       "volatility": 0.17158783444447664
+      }
+     },
+     "total_return": 0.005495,
+     "trades": [
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 709.04,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "V"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 536.72,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 708.53,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PG"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 740.63,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PFE"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 453.46,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "LIN"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 733.31,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 605.23,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JPM"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 715.31,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JNJ"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 632.76,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "GD"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 615.88,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 485.3,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BRK-B"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 507.55,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "ABBV"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 622.34,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AAPL"
+      }
+     ]
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 13.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 22.91,
+      "fx_costs": 0.0,
+      "interest_net": 0.57,
+      "liquidation_tax": 50.62,
+      "loss_carryforward": 0.0,
+      "spread_costs": 9.62,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.000368,
+       "equity": 9996.32,
+       "gross_equity": 10041.64
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10102.9,
+       "gross_equity": 10184.53
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10144.66,
+       "gross_equity": 10240.81
+      }
+     ],
+     "id": "agent-regime@traderepublic",
+     "latest_equity": 10144.66,
+     "mark_to_market": 10218.19,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 6.380434441723756,
+       "days": 3,
+       "expected_shortfall_95": 0.0041639999999998345,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 23.177747723306148,
+       "sortino": null,
+       "total_return": 0.02408100000000002,
+       "turnover": 80.30716994448315,
+       "volatility": 0.08668923179325204
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 2.34156318434548,
+       "days": 3,
+       "expected_shortfall_95": -0.00036800000000003497,
+       "max_drawdown": -0.00036800000000003497,
+       "profit_factor": 40.3097826086925,
+       "sharpe": 13.765545780439236,
+       "sortino": 359.3185203626947,
+       "total_return": 0.01446600000000009,
+       "turnover": 80.75236880738139,
+       "volatility": 0.08803870166115332
+      }
+     },
+     "total_return": 0.014466,
+     "trades": [
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 743.99,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "V"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PG"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PFE"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "LIN"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JPM"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JNJ"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "GD"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BRK-B"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "ABBV"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 744.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AAPL"
+      }
+     ]
+    }
+   },
+   "target_allocation": {
+    "AAPL": 0.0745,
+    "ABBV": 0.0745,
+    "BRK-B": 0.0745,
+    "CVX": 0.0745,
+    "GD": 0.0745,
+    "JNJ": 0.0745,
+    "JPM": 0.0745,
+    "KO": 0.0745,
+    "LIN": 0.0745,
+    "PFE": 0.0745,
+    "PG": 0.0745,
+    "UNP": 0.0745,
+    "V": 0.0745
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": 0.5,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {
+      "fineco": 3,
+      "traderepublic": 3
+     },
+     "outcome": "applied",
+     "prompt_version": "meanrev-v3-2143d851",
+     "rationale": "Portafoglio tutto in cassa. Scelti tre ipervenduti sopra la media a 200 sedute: PLTR (z -1,92), AMD (z -1,45, RSI 40), CSCO (z -1,45, RSI 40). Tutti IT, quindi 30% max di settore; il resto resta in cassa perche le altre occasioni sono deboli o vicine alla SMA200.",
+     "reason_codes": [
+      "OVERSOLD_ZSCORE",
+      "ABOVE_SMA200",
+      "SECTOR_CAP_IT"
+     ],
+     "session": "2026-10-30",
+     "targets": {
+      "AMD": 0.1,
+      "CSCO": 0.1,
+      "PLTR": 0.1
+     }
+    },
+    {
+     "confidence": null,
+     "detail": "pipeline non eseguita in questa seduta",
+     "model_id": null,
+     "orders": {},
+     "outcome": "missed",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [],
+     "session": "2026-10-29",
+     "targets": {}
+    },
+    {
+     "confidence": 0.6,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "meanrev-v3-2143d851",
+     "rationale": "Portafoglio in cassa. Unico candidato MRK con z-score -1,19 e RSI 43: non abbastanza ipervenduto. I titoli con z-score sotto -1,5 e RSI sotto 35 (NFLX, T, UBER, BKNG, SCHW) sono sotto la media a 200 sedute o in drawdown profondo. Nessuna occasione netta: resto in cassa.",
+     "reason_codes": [
+      "NO_CLEAR_OVERSOLD",
+      "STAY_IN_CASH"
+     ],
+     "session": "2026-10-28",
+     "targets": {}
+    },
+    {
+     "confidence": 0.7,
+     "detail": "",
+     "model_id": "claude-sonnet-5-5",
+     "orders": {},
+     "outcome": "hold",
+     "prompt_version": "meanrev-v2-9b0ff386",
+     "rationale": "Lista mean_reversion vuota. I titoli ipervenduti (z-score < -1,5, RSI < 35) come BA, BKNG, NFLX, T, TMUS, GOOGL, SCHW sono sotto la media a 200 sedute con drawdown profondi: rischio di continuazione al ribasso. META e' appena sotto la SMA200 ma con drawdown -20%. Nessuna occasione di qualita': resto in cassa (portafoglio vuoto) evitando costi.",
+     "reason_codes": [
+      "NO_CANDIDATES",
+      "BELOW_SMA200",
+      "STAY_IN_CASH"
+     ],
+     "session": "2026-10-27",
+     "targets": {}
+    }
+   ],
+   "description": "Ipervenduti di qualità in trend sano.",
+   "id": "agent-meanrev",
+   "kind": "agent",
+   "label": "Agente C · Mean reversion",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 0.0,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      }
+     ],
+     "id": "agent-meanrev@fineco",
+     "latest_equity": 10000.0,
+     "mark_to_market": 10000.0,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      }
+     },
+     "total_return": 0.0,
+     "trades": []
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 2.53,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10002.53,
+       "gross_equity": 10002.53
+      }
+     ],
+     "id": "agent-meanrev@traderepublic",
+     "latest_equity": 10002.53,
+     "mark_to_market": 10002.53,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      }
+     },
+     "total_return": 0.000253,
+     "trades": []
+    }
+   },
+   "target_allocation": {
+    "AMD": 0.1,
+    "CSCO": 0.1,
+    "PLTR": 0.1
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 1,
+      "traderepublic": 1
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [],
+     "session": "2026-10-27",
+     "targets": {
+      "UCITS": 0.99
+     }
+    }
+   ],
+   "description": "ETF S&P 500 ad accumulazione comprato e tenuto.",
+   "id": "bench-sp500",
+   "kind": "benchmark",
+   "label": "S&P 500 (ETF UCITS)",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 18.66,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 51.78,
+      "fx_costs": 29.48,
+      "interest_net": 0.0,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 4.9,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.009478,
+       "equity": 9905.22,
+       "gross_equity": 10011.18
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": -0.013202,
+       "equity": 9867.98,
+       "gross_equity": 9973.74
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": -0.030416,
+       "equity": 9695.84,
+       "gross_equity": 9800.66
+      }
+     ],
+     "id": "bench-sp500@fineco",
+     "latest_equity": 9695.84,
+     "mark_to_market": 9747.62,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.8157331798584434,
+       "days": 3,
+       "expected_shortfall_95": -0.017353570476070113,
+       "max_drawdown": -0.021028490148014556,
+       "profit_factor": 0.0531065931977972,
+       "sharpe": -11.038666608866999,
+       "sortino": -10.313075404567146,
+       "total_return": -0.019934000000000007,
+       "turnover": 82.96093609795308,
+       "volatility": 0.15200501705261907
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.9253247000453148,
+       "days": 3,
+       "expected_shortfall_95": -0.01744429964389871,
+       "max_drawdown": -0.030416,
+       "profit_factor": 0.0,
+       "sharpe": -23.62180813341016,
+       "sortino": -13.917080609059912,
+       "total_return": -0.030416,
+       "turnover": 83.62627923050574,
+       "volatility": 0.1091060597693514
+      }
+     },
+     "total_return": -0.030416,
+     "trades": [
+      {
+       "commission_eur": 18.66,
+       "notional_eur": 9823.36,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UCITS"
+      }
+     ]
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 1.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 10.69,
+      "fx_costs": 0.0,
+      "interest_net": 0.53,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 9.89,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.001051,
+       "equity": 9989.49,
+       "gross_equity": 10011.28
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": -0.004829,
+       "equity": 9951.71,
+       "gross_equity": 9973.46
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": -0.022244,
+       "equity": 9777.56,
+       "gross_equity": 9799.14
+      }
+     ],
+     "id": "bench-sp500@traderepublic",
+     "latest_equity": 9777.56,
+     "mark_to_market": 9788.25,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.818118366105855,
+       "days": 3,
+       "expected_shortfall_95": -0.017478387640798676,
+       "max_drawdown": -0.02119009756994128,
+       "profit_factor": 0.053172433298767745,
+       "sharpe": -11.044648505785583,
+       "sortino": -10.316379176211038,
+       "total_return": -0.020086000000000048,
+       "turnover": 83.60330867678066,
+       "volatility": 0.1530843297224981
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.8488663631789082,
+       "days": 3,
+       "expected_shortfall_95": -0.01749950511017706,
+       "max_drawdown": -0.02224400000000004,
+       "profit_factor": 0.0,
+       "sharpe": -13.406448974108118,
+       "sortino": -11.412772360545302,
+       "total_return": -0.02224400000000004,
+       "turnover": 83.74037860195033,
+       "volatility": 0.13992730817429833
+      }
+     },
+     "total_return": -0.022244,
+     "trades": [
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 9899.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UCITS"
+      }
+     ]
+    }
+   },
+   "target_allocation": {
+    "UCITS": 0.99
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 0,
+      "traderepublic": 0
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [],
+     "session": "2026-10-27",
+     "targets": {}
+    }
+   ],
+   "description": "Solo cassa: interessi del broker al netto delle imposte.",
+   "id": "bench-cash",
+   "kind": "benchmark",
+   "label": "Liquidità",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 0.0,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      }
+     ],
+     "id": "bench-cash@fineco",
+     "latest_equity": 10000.0,
+     "mark_to_market": 10000.0,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      }
+     },
+     "total_return": 0.0,
+     "trades": []
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 2.53,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10002.53,
+       "gross_equity": 10002.53
+      }
+     ],
+     "id": "bench-cash@traderepublic",
+     "latest_equity": 10002.53,
+     "mark_to_market": 10002.53,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      }
+     },
+     "total_return": 0.000253,
+     "trades": []
+    }
+   },
+   "target_allocation": {}
+  },
+  {
+   "decisions": [
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 3,
+      "traderepublic": 2
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_MOMENTUM"
+     ],
+     "session": "2026-10-30",
+     "targets": {
+      "AMD": 0.0825,
+      "AMGN": 0.0825,
+      "BMY": 0.0825,
+      "BNY": 0.0825,
+      "COP": 0.0825,
+      "CVX": 0.0825,
+      "DE": 0.0825,
+      "DELL": 0.0825,
+      "FDX": 0.0825,
+      "MRK": 0.0825,
+      "MU": 0.0825,
+      "XOM": 0.0825
+     }
+    },
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 12,
+      "traderepublic": 12
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_MOMENTUM"
+     ],
+     "session": "2026-10-27",
+     "targets": {
+      "AMGN": 0.0825,
+      "BMY": 0.0825,
+      "BNY": 0.0825,
+      "COP": 0.0825,
+      "CVX": 0.0825,
+      "DE": 0.0825,
+      "DELL": 0.0825,
+      "FDX": 0.0825,
+      "MRK": 0.0825,
+      "MU": 0.0825,
+      "SNDK": 0.0825,
+      "XOM": 0.0825
+     }
+    }
+   ],
+   "description": "12 titoli con il momentum 12-1 più forte, mensile, con buffer e banda del 4%.",
+   "id": "bench-momentum-rules",
+   "kind": "benchmark",
+   "label": "Momentum a regole",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 29.5,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 55.09,
+      "fx_costs": 21.54,
+      "interest_net": 0.0,
+      "liquidation_tax": 14.51,
+      "loss_carryforward": 0.0,
+      "spread_costs": 3.58,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.008993,
+       "equity": 9910.07,
+       "gross_equity": 10019.27
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": -0.00045,
+       "equity": 9995.5,
+       "gross_equity": 10105.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10041.31,
+       "gross_equity": 10165.53
+      }
+     ],
+     "id": "bench-momentum-rules@fineco",
+     "latest_equity": 10041.31,
+     "mark_to_market": 10110.91,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 2.97120415953911,
+       "days": 3,
+       "expected_shortfall_95": 0.001927000000000012,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 26.077031238818023,
+       "sortino": null,
+       "total_return": 0.01655300000000004,
+       "turnover": 59.787030960689805,
+       "volatility": 0.05306523163083092
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.41381147484442327,
+       "days": 3,
+       "expected_shortfall_95": -0.008993000000000029,
+       "max_drawdown": -0.008993000000000029,
+       "profit_factor": 1.4593572778827906,
+       "sharpe": 2.4146373709130855,
+       "sortino": 4.291189262621701,
+       "total_return": 0.004130999999999885,
+       "turnover": 60.30026675424965,
+       "volatility": 0.14647718600654075
+      }
+     },
+     "total_return": 0.004131,
+     "trades": [
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 809.88,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "XOM"
+      },
+      {
+       "commission_eur": null,
+       "notional_eur": null,
+       "reject_reason": "below_minimum",
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "rejected",
+       "symbol": "SNDK"
+      },
+      {
+       "commission_eur": null,
+       "notional_eur": null,
+       "reject_reason": "below_minimum",
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "rejected",
+       "symbol": "MU"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 753.44,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "MRK"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 550.21,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "FDX"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 452.14,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DELL"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 577.34,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DE"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 821.18,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 800.75,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "COP"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 798.97,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BNY"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 813.99,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BMY"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 791.17,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AMGN"
+      }
+     ]
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 12.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 21.82,
+      "fx_costs": 0.0,
+      "interest_net": 0.53,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 9.84,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10010.35,
+       "gross_equity": 10057.74
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": -4.5e-05,
+       "equity": 10009.9,
+       "gross_equity": 10057.17
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": -0.011078,
+       "equity": 9899.46,
+       "gross_equity": 9943.12
+      }
+     ],
+     "id": "bench-momentum-rules@traderepublic",
+     "latest_equity": 9899.46,
+     "mark_to_market": 9921.28,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.3806941440045808,
+       "days": 3,
+       "expected_shortfall_95": -0.011340168258068495,
+       "max_drawdown": -0.011396198350722808,
+       "profit_factor": 0.5037515267841589,
+       "sharpe": -3.4196581073697057,
+       "sortino": -4.544336960107878,
+       "total_return": -0.005687999999999915,
+       "turnover": 82.9388764250264,
+       "volatility": 0.1381186749221988
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": -0.5720762077904028,
+       "days": 3,
+       "expected_shortfall_95": -0.011033077253519097,
+       "max_drawdown": -0.01107753475153228,
+       "profit_factor": 0.09333573811885876,
+       "sharpe": -7.958332985554121,
+       "sortino": -8.342652815067,
+       "total_return": -0.010054000000000118,
+       "turnover": 83.22625590215961,
+       "volatility": 0.10600393104585655
+      }
+     },
+     "total_return": -0.010054,
+     "trades": [
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "XOM"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "SNDK"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "MU"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "MRK"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "FDX"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DELL"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DE"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "CVX"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "COP"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BNY"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BMY"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "AMGN"
+      }
+     ]
+    }
+   },
+   "target_allocation": {
+    "AMD": 0.0825,
+    "AMGN": 0.0825,
+    "BMY": 0.0825,
+    "BNY": 0.0825,
+    "COP": 0.0825,
+    "CVX": 0.0825,
+    "DE": 0.0825,
+    "DELL": 0.0825,
+    "FDX": 0.0825,
+    "MRK": 0.0825,
+    "MU": 0.0825,
+    "XOM": 0.0825
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 9,
+      "traderepublic": 6
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_REGIME"
+     ],
+     "session": "2026-10-30",
+     "targets": {
+      "AAPL": 0.0825,
+      "BNY": 0.0825,
+      "BRK-B": 0.0825,
+      "COST": 0.0825,
+      "DUK": 0.0825,
+      "GD": 0.0825,
+      "JPM": 0.0825,
+      "KO": 0.0825,
+      "LIN": 0.0825,
+      "NEE": 0.0825,
+      "SO": 0.0825,
+      "UNP": 0.0825
+     }
+    },
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 12,
+      "traderepublic": 12
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_REGIME"
+     ],
+     "session": "2026-10-27",
+     "targets": {
+      "BRK-B": 0.0825,
+      "COST": 0.0825,
+      "DUK": 0.0825,
+      "GD": 0.0825,
+      "JPM": 0.0825,
+      "KO": 0.0825,
+      "LIN": 0.0825,
+      "NEE": 0.0825,
+      "PFE": 0.0825,
+      "PG": 0.0825,
+      "UNP": 0.0825,
+      "V": 0.0825
+     }
+    }
+   ],
+   "description": "Esposizione da trend e volatilità dell'indice, mensile.",
+   "id": "bench-regime-rules",
+   "kind": "benchmark",
+   "label": "Regime a regole",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 32.45,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 59.74,
+      "fx_costs": 22.89,
+      "interest_net": 0.0,
+      "liquidation_tax": 19.48,
+      "loss_carryforward": 0.0,
+      "spread_costs": 3.81,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.011601,
+       "equity": 9883.99,
+       "gross_equity": 10002.22
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10004.5,
+       "gross_equity": 10124.72
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10055.42,
+       "gross_equity": 10193.79
+      }
+     ],
+     "id": "bench-regime-rules@fineco",
+     "latest_equity": 10055.42,
+     "mark_to_market": 10134.64,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 4.014150133315797,
+       "days": 3,
+       "expected_shortfall_95": 0.00022199999999994446,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 16.95053980929293,
+       "sortino": null,
+       "total_return": 0.019379000000000035,
+       "turnover": 63.57551562186498,
+       "volatility": 0.09559935336451127
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.5908091214777196,
+       "days": 3,
+       "expected_shortfall_95": -0.011600999999999972,
+       "max_drawdown": -0.011600999999999972,
+       "profit_factor": 1.4777174381518832,
+       "sharpe": 2.4611704894710558,
+       "sortino": 4.488288779246988,
+       "total_return": 0.005541999999999936,
+       "turnover": 64.17526977203785,
+       "volatility": 0.19389837199478765
+      }
+     },
+     "total_return": 0.005542,
+     "trades": [
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 709.04,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "V"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 805.08,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 708.53,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PG"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 819.99,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PFE"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 812.01,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "NEE"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 453.46,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "LIN"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 814.79,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 605.23,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JPM"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 632.76,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "GD"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 783.01,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DUK"
+      },
+      {
+       "commission_eur": null,
+       "notional_eur": null,
+       "reject_reason": "below_minimum",
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "rejected",
+       "symbol": "COST"
+      },
+      {
+       "commission_eur": 2.95,
+       "notional_eur": 485.3,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BRK-B"
+      }
+     ]
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 12.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 22.13,
+      "fx_costs": 0.0,
+      "interest_net": 0.53,
+      "liquidation_tax": 52.41,
+      "loss_carryforward": 0.0,
+      "spread_costs": 9.84,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": -0.003775,
+       "equity": 9962.25,
+       "gross_equity": 10005.97
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10082.19,
+       "gross_equity": 10154.94
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10150.46,
+       "gross_equity": 10246.84
+      }
+     ],
+     "id": "bench-regime-rules@traderepublic",
+     "latest_equity": 10150.46,
+     "mark_to_market": 10225.0,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 6.754543111444464,
+       "days": 3,
+       "expected_shortfall_95": 0.0005969999999999587,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 18.068333870507992,
+       "sortino": null,
+       "total_return": 0.024683999999999928,
+       "turnover": 82.22097592664774,
+       "volatility": 0.11406315323800367
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 2.5059105044117542,
+       "days": 3,
+       "expected_shortfall_95": -0.003774999999999973,
+       "max_drawdown": -0.003774999999999973,
+       "profit_factor": 4.985695364238388,
+       "sharpe": 9.880167630925945,
+       "sortino": 36.50472569517248,
+       "total_return": 0.015045999999999893,
+       "turnover": 82.6563728234179,
+       "volatility": 0.12783252734454534
+      }
+     },
+     "total_return": 0.015046,
+     "trades": [
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 823.99,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "V"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "UNP"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PG"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "PFE"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "NEE"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "LIN"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "KO"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "JPM"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "GD"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "DUK"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "COST"
+      },
+      {
+       "commission_eur": 1.0,
+       "notional_eur": 824.0,
+       "reject_reason": null,
+       "session": "2026-10-28",
+       "side": "buy",
+       "status": "filled",
+       "symbol": "BRK-B"
+      }
+     ]
+    }
+   },
+   "target_allocation": {
+    "AAPL": 0.0825,
+    "BNY": 0.0825,
+    "BRK-B": 0.0825,
+    "COST": 0.0825,
+    "DUK": 0.0825,
+    "GD": 0.0825,
+    "JPM": 0.0825,
+    "KO": 0.0825,
+    "LIN": 0.0825,
+    "NEE": 0.0825,
+    "SO": 0.0825,
+    "UNP": 0.0825
+   }
+  },
+  {
+   "decisions": [
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 0,
+      "traderepublic": 0
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_MEANREV"
+     ],
+     "session": "2026-10-30",
+     "targets": {}
+    },
+    {
+     "confidence": null,
+     "detail": "",
+     "model_id": "deterministic",
+     "orders": {
+      "fineco": 0,
+      "traderepublic": 0
+     },
+     "outcome": "applied",
+     "prompt_version": null,
+     "rationale": "",
+     "reason_codes": [
+      "RULES_MEANREV"
+     ],
+     "session": "2026-10-27",
+     "targets": {}
+    }
+   ],
+   "description": "Ipervenduti in trend rialzista, mensile.",
+   "id": "bench-meanrev-rules",
+   "kind": "benchmark",
+   "label": "Mean reversion a regole",
+   "portfolios": {
+    "fineco": {
+     "broker": "fineco",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 0.0,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      }
+     ],
+     "id": "bench-meanrev-rules@fineco",
+     "latest_equity": 10000.0,
+     "mark_to_market": 10000.0,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.0,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": null,
+       "sortino": null,
+       "total_return": 0.0,
+       "turnover": 0.0,
+       "volatility": 0.0
+      }
+     },
+     "total_return": 0.0,
+     "trades": []
+    },
+    "traderepublic": {
+     "broker": "traderepublic",
+     "costs": {
+      "capital_gains_tax": 0.0,
+      "commissions": 0.0,
+      "dividend_taxes": 0.0,
+      "dividends_net": 0.0,
+      "exit_costs": 0.0,
+      "fx_costs": 0.0,
+      "interest_net": 2.53,
+      "liquidation_tax": 0.0,
+      "loss_carryforward": 0.0,
+      "spread_costs": 0.0,
+      "stamp_duty": 0.0
+     },
+     "equity": [
+      {
+       "date": "2026-10-27",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-28",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-29",
+       "drawdown": 0.0,
+       "equity": 10000.0,
+       "gross_equity": 10000.0
+      },
+      {
+       "date": "2026-10-30",
+       "drawdown": 0.0,
+       "equity": 10002.53,
+       "gross_equity": 10002.53
+      }
+     ],
+     "id": "bench-meanrev-rules@traderepublic",
+     "latest_equity": 10002.53,
+     "mark_to_market": 10002.53,
+     "metrics": {
+      "gross": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      },
+      "net": {
+       "alpha": null,
+       "beta": null,
+       "cagr": 0.021476686367061903,
+       "days": 3,
+       "expected_shortfall_95": 0.0,
+       "max_drawdown": 0.0,
+       "profit_factor": null,
+       "sharpe": 9.16515138991168,
+       "sortino": null,
+       "total_return": 0.00025300000000005873,
+       "turnover": 0.0,
+       "volatility": 0.0023187833016481934
+      }
+     },
+     "total_return": 0.000253,
+     "trades": []
+    }
+   },
+   "target_allocation": {}
+  }
+ ]
+}
